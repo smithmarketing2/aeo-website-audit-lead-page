@@ -2,5 +2,5 @@
   "provider": "Google Sheets",
   "type": "google_apps_script",
   "collects": ["name", "email", "timestamp", "source"],
-  "script_url": "https://script.google.com/macros/s/AKfycbxz5LpC3Zv3x8QjF8m9N3pQ2rS1tU4vW5xYzAbcDeFgHiJkLmNopQrStUvWxYz012345/exec"
+  "script_url": "https://script.google.com/macros/s/AKfycbyXtMHEaIEiqc1sqntra0Z-8hddKCiKh7Kj0hmDsGBMBwzwAKj9tRYyJD_1QzbP-pSM/exec"
 }

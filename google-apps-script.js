@@ -3,50 +3,59 @@
  * Deploy as Web App with "Execute as me" and "Anyone" access
  */
 
-const SHEET_NAME = 'Leads';
-const SPREADSHEET_ID = '{{SPREADSHEET_ID}}'; // Will be set after sheet creation
-
 function doPost(e) {
+  // CORS headers
+  var headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST",
+    "Access-Control-Allow-Headers": "Content-Type"
+  };
+  
+  // Handle preflight
+  if (e.parameter && e.parameter.method === "OPTIONS") {
+    return ContentService.createTextOutput(JSON.stringify({"status": "ok"}))
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeaders(headers);
+  }
+  
   try {
-    // Parse JSON payload
-    var data = JSON.parse(e.postData.contents);
-    
-    // Get or create spreadsheet
+    // Get active spreadsheet
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = ss.getSheetByName(SHEET_NAME);
+    var sheet = ss.getActiveSheet();
     
-    if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
-      // Add headers
-      sheet.appendRow(['Timestamp', 'Name', 'Email', 'Business', 'Website', 'Source']);
-      // Format header row
-      sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
+    // Create headers if first row is empty
+    if (sheet.getRange(1, 1).getValue() === "") {
+      sheet.getRange(1, 1, 1, 5).setValues([["Timestamp", "Name", "Email", "Source", "Page URL"]]);
+      sheet.getRange(1, 1, 1, 5).setFontWeight("bold");
     }
     
-    // Append lead data
-    sheet.appendRow([
-      data.timestamp || new Date().toISOString(),
-      data.name || '',
-      data.email || '',
-      data.business || '',
-      data.website || '',
-      data.source || 'aeo-website-audit'
-    ]);
+    // Get form data
+    var name = e.parameter.name || "";
+    var email = e.parameter.email || "";
+    var source = e.parameter.source || "aeo-website-audit";
+    var pageUrl = e.parameter.pageUrl || "";
+    var timestamp = new Date();
+    
+    // Append row
+    sheet.appendRow([timestamp, name, email, source, pageUrl]);
     
     // Return success
-    return ContentService
-      .createTextOutput(JSON.stringify({ status: 'success', message: 'Lead captured' }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({
+      "status": "success",
+      "message": "Thanks! Check your email for your audit."
+    })).setMimeType(ContentService.MimeType.JSON).setHeaders(headers);
       
   } catch (error) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ status: 'error', message: error.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({
+      "status": "error",
+      "message": "Something went wrong. Please try again."
+    })).setMimeType(ContentService.MimeType.JSON).setHeaders(headers);
   }
 }
 
 function doGet(e) {
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok', message: 'AEO Audit Lead Capture API' }))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(JSON.stringify({
+    "status": "ok",
+    "message": "AEO Website Audit Lead Capture API is running"
+  })).setMimeType(ContentService.MimeType.JSON);
 }
