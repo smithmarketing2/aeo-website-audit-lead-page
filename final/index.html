@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AEO Website Audit | Smith Media Marketing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .headline {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, #e94560 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subheadline {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .form-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #e94560;
+        }
+        .form-group input::placeholder {
+            color: #666;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #e94560 0%, #c73e54 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .privacy-text {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        #formMessage {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .success { 
+            background: rgba(34, 197, 94, 0.2); 
+            color: #22c55e; 
+        }
+        .error { 
+            background: rgba(239, 68, 68, 0.2); 
+            color: #ef4444; 
+        }
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+        .feature::before {
+            content: "✓";
+            color: #22c55e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="headline">Get a Free AEO Website Audit — See Why You're Losing Leads</h1>
+        <p class="subheadline">Discover hidden issues hurting your search rankings in 60 seconds</p>
+        
+        <div class="features">
+            <span class="feature">100% Free</span>
+            <span class="feature">Instant Results</span>
+            <span class="feature">Actionable Fixes</span>
+        </div>
+        
+        <div class="video-container">
+            <iframe src="https://media.publit.io/file/cad7e60c-7ad7-4c8b-9207-f3b05809d1ce.html" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <div class="form-container">
+            <div class="form-title">Get Your Free Audit</div>
+            <div class="form-subtitle">Enter your details below and we'll analyze your website</div>
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <input type="hidden" name="source" value="aeo-website-audit-lead-page">
+                <button type="submit" class="submit-btn" id="submitBtn">Get My Free Audit</button>
+                <div id="formMessage"></div>
+            </form>
+            <p class="privacy-text">We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+    </div>
+
+    <script>
+        // Google Apps Script Web App URL
+        const FORM_ACTION = "https://script.google.com/macros/s/AKfycbxz5LpC3Zv3x8QjF8m9N3pQ2rS1tU4vW5xYzAbcDeFgHiJkLmNopQrStUvWxYz012345/exec";
+        const REDIRECT_URL = "https://marketingpro76.com";
+        
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = document.getElementById('submitBtn');
+            var msg = document.getElementById('formMessage');
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+            
+            // Prepare form data
+            var formData = new FormData(this);
+            formData.append('pageUrl', window.location.href);
+            
+            // Send to Google Sheets
+            fetch(FORM_ACTION, { 
+                method: 'POST', 
+                body: formData 
+            })
+            .then(r => r.json())
+            .then(data => {
+                msg.style.display = 'block';
+                if (data.status === 'success') {
+                    msg.className = 'success';
+                    msg.textContent = 'Success! Redirecting you now...';
+                    // Redirect after short delay
+                    setTimeout(function() {
+                        window.location.href = REDIRECT_URL;
+                    }, 1500);
+                } else {
+                    msg.className = 'error';
+                    msg.textContent = data.message || 'Something went wrong. Please try again.';
+                    btn.disabled = false;
+                    btn.textContent = 'Get My Free Audit';
+                }
+            })
+            .catch(() => {
+                // Silent fail - still redirect
+                msg.style.display = 'block';
+                msg.className = 'success';
+                msg.textContent = 'Thanks! Redirecting you now...';
+                setTimeout(function() {
+                    window.location.href = REDIRECT_URL;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

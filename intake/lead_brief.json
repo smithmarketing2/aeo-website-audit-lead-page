@@ -1,0 +1,14 @@
+{
+  "lead_magnet_name": "Free AEO Website Audit",
+  "headline": "Get a Free AEO Website Audit — See Why You're Losing Leads",
+  "subheadline": "Discover hidden issues hurting your search rankings in 60 seconds",
+  "target_audience": "Local business owners",
+  "email_provider": "Google Sheets",
+  "template": "Video Lead Page",
+  "video_url": "https://media.publit.io/file/cad7e60c-7ad7-4c8b-9207-f3b05809d1ce.html",
+  "post_submit_action": "redirect",
+  "redirect_url": "https://marketingpro76.com",
+  "button_text": "Get My Free Audit",
+  "privacy_text": "We respect your privacy. Unsubscribe anytime.",
+  "source": "aeo-website-audit-lead-page"
+}
