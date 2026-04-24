@@ -467,14 +467,25 @@
             btn.disabled = true;
             btn.textContent = 'Submitting...';
             
-            // Prepare form data as URL-encoded string
-            var params = new URLSearchParams(new FormData(this));
-            params.append('pageUrl', window.location.href);
+            // Prepare form data manually to ensure all fields are captured
+            var formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                website: document.getElementById('website').value,
+                source: 'aeo-website-audit-lead-page',
+                pageUrl: window.location.href
+            };
+            
+            // Convert to URL-encoded string
+            var params = new URLSearchParams();
+            for (var key in formData) {
+                params.append(key, formData[key]);
+            }
             
             // Send to Google Sheets
             fetch(FORM_ACTION, { 
                 method: 'POST', 
-                body: params,
+                body: params.toString(),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
