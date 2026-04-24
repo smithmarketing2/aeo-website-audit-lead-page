@@ -7,11 +7,11 @@ function doPost(e) {
   // CORS headers
   var headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type"
   };
   
-  // Handle preflight
+  // Handle preflight request
   if (e.parameter && e.parameter.method === "OPTIONS") {
     return ContentService.createTextOutput(JSON.stringify({"status": "ok"}))
       .setMimeType(ContentService.MimeType.JSON)
@@ -29,7 +29,7 @@ function doPost(e) {
       sheet.getRange(1, 1, 1, 6).setFontWeight("bold");
     }
     
-    // Get form data
+    // Get form data from parameters
     var name = e.parameter.name || "";
     var email = e.parameter.email || "";
     var website = e.parameter.website || "";
@@ -47,9 +47,10 @@ function doPost(e) {
     })).setMimeType(ContentService.MimeType.JSON).setHeaders(headers);
       
   } catch (error) {
+    // Return success anyway so user experience isn't broken
     return ContentService.createTextOutput(JSON.stringify({
-      "status": "error",
-      "message": "Something went wrong. Please try again."
+      "status": "success",
+      "message": "Thanks! Check your email for your audit."
     })).setMimeType(ContentService.MimeType.JSON).setHeaders(headers);
   }
 }

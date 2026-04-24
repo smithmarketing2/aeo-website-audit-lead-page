@@ -467,14 +467,17 @@
             btn.disabled = true;
             btn.textContent = 'Submitting...';
             
-            // Prepare form data
-            var formData = new FormData(this);
-            formData.append('pageUrl', window.location.href);
+            // Prepare form data as URL-encoded string
+            var params = new URLSearchParams(new FormData(this));
+            params.append('pageUrl', window.location.href);
             
             // Send to Google Sheets
             fetch(FORM_ACTION, { 
                 method: 'POST', 
-                body: formData 
+                body: params,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             })
             .then(r => r.json())
             .then(data => {
