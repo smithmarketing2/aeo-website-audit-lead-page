@@ -25,20 +25,19 @@ function doPost(e) {
     
     // Create headers if first row is empty
     if (sheet.getRange(1, 1).getValue() === "") {
-      sheet.getRange(1, 1, 1, 6).setValues([["Timestamp", "Name", "Email", "Website", "Source", "Page URL"]]);
-      sheet.getRange(1, 1, 1, 6).setFontWeight("bold");
+      sheet.getRange(1, 1, 1, 5).setValues([["Timestamp", "Name", "Email", "Source", "Page URL"]]);
+      sheet.getRange(1, 1, 1, 5).setFontWeight("bold");
     }
     
     // Get form data from parameters
     var name = e.parameter.name || "";
     var email = e.parameter.email || "";
-    var website = e.parameter.website || "";
     var source = e.parameter.source || "aeo-website-audit";
     var pageUrl = e.parameter.pageUrl || "";
     var timestamp = new Date();
     
     // Append row
-    sheet.appendRow([timestamp, name, email, website, source, pageUrl]);
+    sheet.appendRow([timestamp, name, email, source, pageUrl]);
     
     // Return success
     return ContentService.createTextOutput(JSON.stringify({
